@@ -10,7 +10,7 @@ export default class Timer extends React.Component {
     };
   }
   static getDerivedStateFromProps(props, state) {
-    console.log("%c getDiredStateFromProps", "background: #bada55");
+    console.log("%c getDerivedStateFromProps", "background: silver");
     if (props.time !== state.initial) {
       return {
         initial: props.time,
@@ -21,12 +21,12 @@ export default class Timer extends React.Component {
   }
 
   render() {
-    console.log("%c render", "background: #0394fc");
+    console.log("%c render", "background: indianred");
     return <div>{this.state.time}</div>;
   }
 
   componentDidMount() {
-    console.log("%c componentDidMount", "background: #fc9403");
+    console.log("%c componentDidMount", "background: cadetblue");
     this.interval = setInterval(
       () => this.setState(state => ({ time: state.time + 1 })),
       5000
@@ -34,24 +34,24 @@ export default class Timer extends React.Component {
   }
 
   shouldComponentUpdate(newProps, newState) {
-    console.log("%c shouldComponentUpdate", "background: #e03838");
+    console.log("%c shouldComponentUpdate", "background: seagreen");
     return newState.time % 2 === 0;
   }
 
   getSnapshotBeforeUpdate(oldProps, oldState) {
-    console.log("%c getSnapshotBeforeUpdate", "background: #03fc77");
+    console.log("%c getSnapshotBeforeUpdate", "background: gold");
     return Date.now();
   }
 
   componentDidUpdate(oldProps, oldState, snapshot) {
-    console.log("%c componentDidUpdate", "background: #068c39");
+    console.log("%c componentDidUpdate", "background: plum");
     if (oldState.initial !== this.state.initial) {
       console.log(`${snapshot} Zeit wurde zurückgesetzt`);
     }
   }
 
   componentWillUnmount() {
-    console.log("%c componentWillUnmount", "background: #79869c");
+    console.log("%c componentWillUnmount", "background: peru");
     clearInterval(this.interval);
   }
 }
