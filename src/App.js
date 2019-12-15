@@ -5,7 +5,8 @@ import Timer from "./Timer";
 
 class App extends Component {
   state = {
-    time: 0
+    time: 0,
+    show: true
   };
 
   getClickHandler() {
@@ -14,11 +15,16 @@ class App extends Component {
     };
   }
 
+  getToogleShowHandler() {
+    return () => this.setState(state => ({ ...state, show: !state.show }));
+  }
+
   render() {
     return (
       <div className="App">
-        <Timer time={this.state.time} />
+        {this.state.show && <Timer time={this.state.time} />}
         <button onClick={this.getClickHandler()}>set</button>
+        <button onClick={this.getToogleShowHandler()}>toogle</button>
       </div>
     );
   }

@@ -37,4 +37,21 @@ export default class Timer extends React.Component {
     console.log("shouldComponentUpdate");
     return newState.time % 2 === 0;
   }
+
+  getSnapshotBeforeUpdate(oldProps, oldState) {
+    console.log("getSnapShorBeforeUpdate");
+    return Date.now();
+  }
+
+  componentDidUpdate(oldProps, oldState, snapshot) {
+    console.log("componentDidUpdate");
+    if (oldState.initial !== this.state.initial) {
+      console.log(`${snapshot} Zeit wurde zurückgesetzt`);
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+    clearInterval(this.interval);
+  }
 }
